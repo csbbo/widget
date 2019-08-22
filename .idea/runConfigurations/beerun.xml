@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="beerun" type="ShConfigurationType" singleton="false">
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/run.sh" />
+    <option name="SCRIPT_OPTIONS" value="" />
+    <option name="INTERPRETER_PATH" value="/usr/bin/zsh" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <method v="2" />
+  </configuration>
+</component>

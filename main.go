@@ -1,8 +1,9 @@
 package main
 
 import (
-	_ "zero/routers"
 	"github.com/astaxie/beego"
+	_ "zero/models"
+	_ "zero/routers"
 )
 
 func main() {

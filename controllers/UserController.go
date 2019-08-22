@@ -3,26 +3,44 @@ package controllers
 import (
 	"encoding/json"
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/validation"
+	"zero/models"
+	"zero/utils"
 )
 
 type UserController struct {
 	beego.Controller
 }
 
-type LoginData struct {
-	Username string `valid:"Required"`
-	Password string `valid:"Required"`
-}
 func (c *UserController) Login() {
-	var loginData LoginData
-	valid := validation.Validation{}
-	json.Unmarshal(c.Ctx.Input.RequestBody, &loginData)
-	v, _ := valid.Valid(&loginData)
-	if !v {
-		c.Data["json"] = valid.Errors
+	var user models.User
+	json.Unmarshal(c.Ctx.Input.RequestBody, &user)
+	if len(models.Valid(&user)) != 0{
+		c.Data["json"] = models.Valid(&user)[0]
 	}else {
-		c.Data["json"] = map[string]interface{}{"status": "succes"}
+		ob := models.ReadUserByName(user)
+		if ob.Username == ""{
+			c.Data["json"] = map[string]interface{}{"message":"user not exist"}
+		}else if ob.Password != utils.Encrypt(user.Password){
+			c.Data["json"] = map[string]interface{}{"message":"password error"}
+		}else {
+			c.Data["json"] = map[string]interface{}{"message":"login success"}
+		}
+	}
+	c.ServeJSON()
+}
+
+func (c *UserController) Regist() {
+	var user models.User
+	json.Unmarshal(c.Ctx.Input.RequestBody, &user)
+	if len(models.Valid(&user)) != 0{
+		c.Data["json"] = models.Valid(&user)[0]
+	}else {
+		err := models.AddUser(user)
+		if err != nil{
+			c.Data["json"] = err.Error()
+		}else {
+			c.Data["json"] = map[string]interface{}{"message":"add user success"}
+		}
 	}
 	c.ServeJSON()
 }
