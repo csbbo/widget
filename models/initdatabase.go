@@ -12,5 +12,4 @@ func init() {
 	mysqldb := beego.AppConfig.String("mysqldb")
 	url := mysqluser+":"+mysqlpass+"@/"+mysqldb+"?charset=utf8"
 	orm.RegisterDataBase("default", "mysql", url)
-	//orm.RegisterModel(new(User))
 }

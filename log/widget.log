@@ -1,0 +1,12 @@
+
+2019/08/25 22:24:09.098 [I] [asm_amd64.s:1337]  http server Running on http://:8080
+2019/08/25 22:24:17.736 [D] [value.go:447]  trace param1 param2
+2019/08/25 22:24:17.737 [D] [value.go:447]  debug
+2019/08/25 22:24:17.737 [I] [value.go:447]  info
+2019/08/25 22:24:17.737 [W] [value.go:447]  warning
+2019/08/25 22:24:17.737 [E] [value.go:447]  error
+2019/08/25 22:24:17.737 [C] [value.go:447]  critical
+2019/08/25 22:24:17.739 [D] [server.go:2774]  |      127.0.0.1|[97;42m 200 [0m|   3.348655ms|   match|[97;46m POST    [0m /login   r:/login
+2019/08/25 22:25:29.740 [I] [asm_amd64.s:1337]  http server Running on http://:8080
+2019/08/25 22:26:24.735 [I] [asm_amd64.s:1337]  http server Running on http://:8080
+2019/08/25 22:27:32.649 [I] [asm_amd64.s:1337]  http server Running on http://:8080
